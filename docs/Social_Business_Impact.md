@@ -1,5 +1,17 @@
 # Social and Business Impact: OptiCrop — Smart Agricultural Production Optimization Engine
 
+**Project:** OptiCrop – Smart Agricultural Production Optimization Engine
+
+**Technology Stack:** Python, Flask, Scikit-learn, HTML, CSS, JavaScript
+
+**Team Lead:** Nelapudi Bhanu Teja
+
+**Team Members:**
+- Member 2
+- Member 3
+- Member 4
+- Member 5
+
 ## 1. Executive Summary
 
 OptiCrop is an intelligent crop recommendation system that leverages machine learning to assist farmers in selecting the most suitable crop based on real-time soil and environmental parameters. Beyond its technical function, the system carries significant implications for social equity, economic productivity, environmental sustainability, and the broader trajectory of agricultural technology. This document analyses the multi-dimensional impact of the OptiCrop system across social, business, environmental, and policy dimensions.
