@@ -1,5 +1,14 @@
 # Literature Survey: Intelligent Crop Recommendation Systems Using Machine Learning
 
+Project: OptiCrop – Smart Agricultural Production Optimization Engine
+
+Technology Stack: Python, Flask, Scikit-learn, HTML, CSS, JavaScript
+
+Team Lead: Nelapudi Bhanu Teja
+
+Team Members:
+- To be updated
+
 ## 1. Introduction
 Agriculture remains the backbone of global food security and economic stability, supporting over 70% of the population in developing nations including India. Despite its importance, the sector faces persistent challenges — unpredictable climate patterns, soil degradation, water scarcity, and the over-reliance on outdated farming practices passed down through generations. These challenges collectively contribute to suboptimal crop selection, poor yield outcomes, and significant financial losses for farmers.
 
