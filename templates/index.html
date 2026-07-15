@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OptiCrop — Smart Agricultural Production Optimization Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__mark">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 22c0-6 4-9 8-10-1 6-4 10-8 10Z" fill="#4C7A3D"/><path d="M12 22c0-7-4.5-10-9-11 1 6.5 4.5 11 9 11Z" fill="#2E4A22"/></svg>
+    OptiCrop
+  </div>
+  <div class="nav__links">
+    <a href="#analyze">Analyze</a>
+    <a href="#how">How it works</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero__grid">
+    <div>
+      <div class="hero__eyebrow">Soil-to-decision, in seconds</div>
+      <h1>Read the soil.<br>Grow the <em>right</em> crop.</h1>
+      <p>OptiCrop analyzes seven soil and climate signals — nitrogen, phosphorus, potassium, temperature, humidity, pH and rainfall — and recommends the crop most likely to thrive under those exact conditions.</p>
+      <div class="hero__stats">
+        <div class="hero__stat"><b>22</b><span>crop varieties</span></div>
+        <div class="hero__stat"><b>96.8%</b><span>model accuracy</span></div>
+        <div class="hero__stat"><b>7</b><span>parameters analyzed</span></div>
+      </div>
+    </div>
+    <div class="field-rows">
+      <svg viewBox="0 0 400 320" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3a4d2c"/>
+            <stop offset="1" stop-color="#1a2614"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="320" fill="url(#sky)"/>
+        <circle cx="330" cy="55" r="30" fill="#dea55a" opacity="0.85"/>
+        <g stroke="#6fa658" stroke-width="3" opacity="0.55">
+          <path d="M-20 340 Q100 240 420 340" fill="none"/>
+          <path d="M-20 300 Q100 210 420 300" fill="none"/>
+          <path d="M-20 260 Q100 185 420 260" fill="none"/>
+          <path d="M-20 220 Q100 165 420 220" fill="none"/>
+        </g>
+        <g fill="#4c7a3d">
+          <ellipse cx="60" cy="260" rx="6" ry="14"/>
+          <ellipse cx="100" cy="250" rx="6" ry="16"/>
+          <ellipse cx="140" cy="245" rx="6" ry="17"/>
+          <ellipse cx="180" cy="242" rx="6" ry="18"/>
+          <ellipse cx="220" cy="244" rx="6" ry="17"/>
+          <ellipse cx="260" cy="250" rx="6" ry="16"/>
+          <ellipse cx="300" cy="258" rx="6" ry="14"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="analyze">
+  <section>
+    <div class="section-label">Soil test</div>
+    <h2 class="section-title">Enter your field conditions</h2>
+    <p class="section-sub">Adjust each reading to match your latest soil test and local climate averages.</p>
+
+    <form class="card" id="crop-form">
+      <div class="field">
+        <div class="field__head">
+          <span class="field__label">🧪 Nitrogen (N)</span>
+          <span class="field__value" id="val-N">90</span>
+        </div>
+        <input type="range" id="N" min="0" max="140" value="90">
+        <div class="field__range"><span>0</span><span>ratio in soil (kg/ha)</span><span>140</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field__head">
+          <span class="field__label">🧪 Phosphorus (P)</span>
+          <span class="field__value" id="val-P">42</span>
+        </div>
+        <input type="range" id="P" min="5" max="145" value="42">
+        <div class="field__range"><span>5</span><span>ratio in soil (kg/ha)</span><span>145</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field__head">
+          <span class="field__label">🧪 Potassium (K)</span>
+          <span class="field__value" id="val-K">43</span>
+        </div>
+        <input type="range" id="K" min="5" max="205" value="43">
+        <div class="field__range"><span>5</span><span>ratio in soil (kg/ha)</span><span>205</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field__head">
+          <span class="field__label">🌡️ Temperature</span>
+          <span class="field__value" id="val-temperature">20.8°C</span>
+        </div>
+        <input type="range" id="temperature" min="8" max="44" step="0.1" value="20.8">
+        <div class="field__range"><span>8°C</span><span>average field temperature</span><span>44°C</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field__head">
+          <span class="field__label">💧 Humidity</span>
+          <span class="field__value" id="val-humidity">82%</span>
+        </div>
+        <input type="range" id="humidity" min="14" max="100" step="0.1" value="82">
+        <div class="field__range"><span>14%</span><span>relative humidity</span><span>100%</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field__head">
+          <span class="field__label">⚗️ Soil pH</span>
+          <span class="field__value" id="val-ph">6.5</span>
+        </div>
+        <input type="range" id="ph" min="3.5" max="10" step="0.1" value="6.5">
+        <div class="field__range"><span>3.5</span><span>acidic ← → alkaline</span><span>10</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field__head">
+          <span class="field__label">🌧️ Rainfall</span>
+          <span class="field__value" id="val-rainfall">203 mm</span>
+        </div>
+        <input type="range" id="rainfall" min="20" max="300" value="203">
+        <div class="field__range"><span>20mm</span><span>seasonal rainfall</span><span>300mm</span></div>
+      </div>
+
+      <button type="submit" class="btn-primary" id="submit-btn">
+        Analyze soil &amp; recommend crop
+      </button>
+    </form>
+  </section>
+
+  <section>
+    <div class="section-label">Recommendation</div>
+    <h2 class="section-title">Your best-fit crop</h2>
+    <p class="section-sub">Powered by a Logistic Regression model trained on agricultural soil and climate data.</p>
+
+    <div class="result">
+      <div class="result__empty" id="result-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#f7f2e7" stroke-width="1.2"><path d="M12 21c-4-3-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-3 8-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <div>Set your soil &amp; climate readings, then run the analysis to see your recommended crop here.</div>
+      </div>
+
+      <div class="result__content" id="result-content">
+        <div class="result__eyebrow">Recommended crop</div>
+        <h3 class="result__crop" id="crop-name">—</h3>
+        <p class="result__info" id="crop-info"></p>
+
+        <div class="dial">
+          <svg viewBox="0 0 100 100">
+            <circle class="dial__ring-bg" cx="50" cy="50" r="42"/>
+            <circle class="dial__ring" id="dial-ring" cx="50" cy="50" r="42"
+                    stroke-dasharray="264" stroke-dashoffset="264"
+                    transform="rotate(-90 50 50)"/>
+          </svg>
+          <div class="dial__label">
+            <b id="confidence-value">0%</b>
+            <span>model confidence</span>
+          </div>
+        </div>
+
+        <div class="alt-title">Other close matches</div>
+        <div class="alt-list" id="alt-list"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section id="how" class="wrap" style="grid-template-columns:1fr;">
+  <div>
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">From soil sample to recommendation</h2>
+    <p class="section-sub" style="max-width:70ch;">
+      OptiCrop was trained on agricultural records covering 22 crop varieties. The pipeline cleans and scales
+      each soil/climate reading, then a Logistic Regression classifier — benchmarked against K-Nearest
+      Neighbors and K-Means clustering during development — predicts the crop with the highest likelihood
+      of thriving under your conditions, along with the runner-up matches.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  Built with <b>Python</b>, <b>scikit-learn</b> &amp; <b>Flask</b> — OptiCrop Smart Agricultural Production Optimization Engine
+</footer>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

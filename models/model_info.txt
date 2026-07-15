@@ -1,0 +1,2 @@
+Best model: LogisticRegression
+Accuracy: 0.9682
